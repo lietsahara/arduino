@@ -10,11 +10,11 @@ int potentiometer=A0;
 const int maxi=600;
 const int mins=0;
 void setup() {
-  //pinMode(A0, INPUT);
 Serial.begin(9600);
 /*servo*/
 servo1.attach(servopin);//connecting obj. to pin
 }
+
 void loop() {
   /*reading printing*/
 int sensorreading=analogRead(A0);
@@ -33,10 +33,11 @@ switch(range){
     Serial.println("higher");
     break;
 }
+  
 delay(3000);
 /*servo control*/
 int reading=analogRead(A0);
-int angle=map(reading, 0, 1023, 0, 180);
+int angle=map(reading, 0, 1023, 0, 180);//if 0 moves to 0 degrees and 1023 to 180 degrees 
 
 servo1.write(angle);
 }
